@@ -110,7 +110,7 @@ gulp.task('build-final', function () {
     // Export
     './build/index.js'
   ])
-    .pipe(concat('Joi.js'))
+    .pipe(concat('Joi.min.js'))
     .pipe(babel({
       presets: ["es2015"],
       compact: false
@@ -134,7 +134,7 @@ gulp.task('build-final', function () {
       '}));\n'
     ].join('\n')))
 
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest('./dist/'));
 });
 
