@@ -2,7 +2,7 @@
 
 // Load modules
 
-const Hoek = require('./Hoek');
+const Hoek = require('hoek');
 
 
 // Declare internals
