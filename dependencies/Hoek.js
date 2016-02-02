@@ -329,6 +329,24 @@ exports.clone = function (obj, seen) {
 };
 
 
+exports.applyToDefaults = function (defaults, options, isNullOverride) {
+
+  exports.assert(defaults && typeof defaults === 'object', 'Invalid defaults value: must be an object');
+  exports.assert(!options || options === true || typeof options === 'object', 'Invalid options value: must be true, falsy or an object');
+
+  if (!options) {                                                 // If no options, return null
+    return null;
+  }
+
+  const copy = exports.clone(defaults);
+
+  if (options === true) {                                         // If options is set to true, use defaults
+    return copy;
+  }
+
+  return exports.merge(copy, options, isNullOverride === true, false);
+};
+
 // Merge all the properties of source into target, source wins in conflict, and by default null and undefined from source are applied
 
 /*eslint-disable */
